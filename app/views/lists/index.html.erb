@@ -1,29 +1,34 @@
-<h1>Lists</h1>
+<h1>Minhas Listas</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Public</th>
-      <th colspan="3"></th>
+      <th>Nome</th>
+      <th>Status</th>
     </tr>
   </thead>
 
   <tbody>
     <% @lists.each do |list| %>
       <tr>
-        <td><%= list.user %></td>
-        <td><%= list.name %></td>
-        <td><%= list.public %></td>
-        <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to list.name, list %></td>
+        <td><%= list.public ? t("Pública") : t("Privada") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br>
+<%= link_to 'Nova Lista', new_list_path %>
+<br><br>
+<h1>Favoritas</h1>
+<table>
+<thead></thead>
+<tbody>
+
+ 
+</tbody>
+</table>
+<br><br>
 
 <br>
 
-<%= link_to 'New List', new_list_path %>
