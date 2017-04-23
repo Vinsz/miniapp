@@ -12,10 +12,14 @@ class ListsController < ApplicationController
   def show
   end
 
+  def publicas
+    @status = List.status(true)
+  end
+  
   # GET /lists/new
   def new
     @list = List.new
-    3.times {@list.tasks.build}
+    4.times {@list.tasks.build}
   end
 
   # GET /lists/1/edit

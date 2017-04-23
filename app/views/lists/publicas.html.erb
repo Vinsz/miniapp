@@ -1,0 +1,14 @@
+<h1>Listas Públicas</h1>
+
+<table>
+  <tbody>
+    <% @status.each do |publica| %>
+      <tr>
+        <td><%= publica.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Voltar', lists_path %>
