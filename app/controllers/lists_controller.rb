@@ -6,11 +6,17 @@ class ListsController < ApplicationController
   def index
     #exibe somente as listas do usuário logado
     @lists = List.all.where(user_id: current_user)
+    #dados para exibir somente as listas favoritas do usuário e enviar para visualização da lista no show dos favoritos
+    @favs = Favorite.joins(:list).select("favorites.id, lists.name, lists.id as lid").where(user_id: current_user)
   end
 
   # GET /lists/1
   # GET /lists/1.json
   def show
+    #pega as tasks abertas
+    @abertas = Task.where(active: true, list_id: params[:id])
+    #pega as tasks fechadas
+    @fechadas = Task.where(active: false, list_id: params[:id])
   end
 
   def publicas

@@ -1,19 +1,31 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>User:</strong>
-  <%= @list.user %>
+  <h1><%= @list.name %></h1>
 </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @list.name %>
-</p>
+  <strong>Status:</strong>
+  <%= @list.public ? t("Pública") : t("Privada") %>
+  <br><br><%= link_to 'Editar Lista', edit_list_path(@list) %>
+  <br><%= link_to 'Apagar Lista', @list, method: :delete, data: { confirm: 'Você tem certeza?' } %>
+<br><br>
+<table>
+	<thead>
+		<tr>
+			<th> Tarefa </th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @abertas.each do |task| %>
+	    	<tr>
+	        	<td><%= task.text %></td>
+	    	</tr>
+	  	<% end %>
+	  	<% @fechadas.each do |task| %>
+	    	<tr>
+	        	<td><del><%= task.text %></del></td>
+	    	</tr>
+	  	<% end %>
+  </tbody>	
+</table>
 
-<p>
-  <strong>Public:</strong>
-  <%= @list.public %>
-</p>
-
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<br>
+<%= link_to 'Voltar', lists_path %>
