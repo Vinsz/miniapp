@@ -4,7 +4,8 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    #exibe somente as listas do usuário logado
+    @lists = List.all.where(user_id: current_user)
   end
 
   # GET /lists/1
@@ -13,9 +14,10 @@ class ListsController < ApplicationController
   end
 
   def publicas
-    @status = List.status(true)
+    #só apresenta listas com status=true, ou seja, publicas
+    @status = List.status(true) 
   end
-  
+
   # GET /lists/new
   def new
     @list = List.new

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorites
   resources :tasks
   resources :lists
   devise_for :users
