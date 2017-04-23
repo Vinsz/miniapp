@@ -4,7 +4,7 @@
   <tbody>
     <% @status.each do |publica| %>
       <tr>
-        <td><%= publica.name %></td>
+        <td><%= link_to publica.name, new_favorite_path(publica, :id=>current_user, :list=> publica.id, :name =>publica.name) %></td>
       </tr>
     <% end %>
   </tbody>

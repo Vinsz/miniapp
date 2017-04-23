@@ -12,13 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :list_id %>
-    <%= f.text_field :list_id %>
+    <%= f.hidden_field :list_id, :value => params[:list]  %>
   </div>
 
   <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%= f.hidden_field :user_id, :value => params[:id]  %>
   </div>
 
   <div class="actions">
