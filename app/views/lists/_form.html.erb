@@ -16,12 +16,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :nome %>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :public %>
+    <%= f.label :pública? %>
     <%= f.check_box :public %>
   </div>
 
@@ -37,7 +37,6 @@
       <%= builder.check_box :active %>
     </div>
   <% end %>
-
 
   <div class="actions">
     <%= f.submit %>

@@ -10,11 +10,20 @@ class FavoritesController < ApplicationController
   # GET /favorites/1
   # GET /favorites/1.json
   def show
+    @lista = List.where(id: params[:lid])
+    #pega as tasks abertas
+    @abertas = Task.where(list_id: params[:lid], active: true)
+    #pega as tasks fechadas
+    @fechadas = Task.where(list_id: params[:lid], active: false)
   end
 
   # GET /favorites/new
   def new
     @favorite = Favorite.new
+    #pega as tasks abertas
+    @abertas = Task.where(list_id: params[:list], active: true)
+    #pega as tasks fechadas
+    @fechadas = Task.where(list_id: params[:list], active: false)
   end
 
   # GET /favorites/1/edit
@@ -28,7 +37,7 @@ class FavoritesController < ApplicationController
 
     respond_to do |format|
       if @favorite.save
-        format.html { redirect_to @favorite, notice: 'Favorite was successfully created.' }
+        format.html { redirect_to lists_url, notice: 'Adicionado aos favoritos.' }
         format.json { render :show, status: :created, location: @favorite }
       else
         format.html { render :new }
@@ -56,7 +65,7 @@ class FavoritesController < ApplicationController
   def destroy
     @favorite.destroy
     respond_to do |format|
-      format.html { redirect_to favorites_url, notice: 'Favorite was successfully destroyed.' }
+      format.html { redirect_to lists_url, notice: 'Apagado dos favoritos.' }
       format.json { head :no_content }
     end
   end

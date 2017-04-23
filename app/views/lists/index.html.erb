@@ -28,7 +28,7 @@
 <tbody>
 <% @favs.each do |fav| %>
       <tr>
-        <td><%= link_to fav.name, favorite_path(fav, :lisid=> fav.lid) %></td>
+        <td><%= link_to fav.name, favorite_path(fav, :lid=> fav.lid) %></td>
       </tr>
 <% end %> 
 </tbody>
