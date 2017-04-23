@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   root "lists#index"
 
   get "/publicas" => "lists#publicas"
+  get "/favoritas" => "lists#favoritas"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

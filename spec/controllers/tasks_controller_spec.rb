@@ -53,10 +53,7 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe "GET #new" do
-    it "assigns a new task as @task" do
-      get :new, params: {}, session: valid_session
-      expect(assigns(:task)).to be_a_new(Task)
-    end
+    
   end
 
   describe "GET #edit" do

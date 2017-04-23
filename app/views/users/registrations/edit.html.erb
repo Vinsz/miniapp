@@ -1,0 +1,120 @@
+<%= render 'edit' %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+
+<div class="row">
+  <div class="col-lg-6">
+    <h2>Editar <%= resource_name.to_s.humanize %></h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Email</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>  
+                <div class="field">
+                  <%= f.email_field :email, autofocus: true %>
+                </div>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+              </td>
+            </tr>           
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-lg-6">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Senha</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="field">
+                   <i>(deixe em branco se não quiser alterar)</i><br />
+                    <%= f.password_field :password, autocomplete: "off" %>
+                    <% if @minimum_password_length %>
+                      <br />
+                      <em><%= @minimum_password_length %> caracteres no mínimo</em>
+                    <% end %>
+                  </div>
+              </td>
+              </td>
+            </tr>           
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Redigite a Senha</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="field">
+                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                </div>
+              </td>
+            </tr>           
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-6">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Senha Atual</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="field">
+                  <%= f.password_field :current_password, autocomplete: "off" %>
+                </div>
+              </td>
+            </tr>           
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancelar conta</h3>
+
+<%= button_to "Apagar Conta", registration_path(resource_name), data: { confirm: "Você tem certeza?" }, method: :delete %></p>
+

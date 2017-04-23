@@ -1,25 +1,30 @@
-<h1><%= params[:name] %></h1>
+<%= render 'teste' %>
 
-<table>
-	<thead>
-		<tr>
-			<th>Tarefas</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @abertas.each do |task| %>
-	    	<tr>
-	        	<td><%= task.text %></td>
-	    	</tr>
-	  	<% end %>
-	  	<% @fechadas.each do |task| %>
-	    	<tr>
-	        	<td><del><%= task.text %></del></td>
-	    	</tr>
-	  	<% end %>
-	</tbody>
-</table>
+<div class="row">
+  <div class="col-lg-6">
+    <h2><%= params[:name] %></h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Texto</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @abertas.each do |task| %>
+		    	<tr>
+		        	<td><%= task.text %></td>
+		    	</tr>
+	  		<% end %>
+	  		<% @fechadas.each do |task| %>
+		    	<tr>
+		        	<td><del><%= task.text %></del></td>
+		    	</tr>
+	  		<% end %>          
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
 
 <%= render 'form', favorite: @favorite %>
-
-<%= link_to 'Voltar',  {:controller => 'lists', :action => 'publicas'} %>

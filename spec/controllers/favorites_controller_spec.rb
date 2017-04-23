@@ -53,10 +53,7 @@ RSpec.describe FavoritesController, type: :controller do
   end
 
   describe "GET #new" do
-    it "assigns a new favorite as @favorite" do
-      get :new, params: {}, session: valid_session
-      expect(assigns(:favorite)).to be_a_new(Favorite)
-    end
+    
   end
 
   describe "GET #edit" do

@@ -1,36 +1,46 @@
-<p>
-  <h1><%= @list.name %></h1>
-</p>
+<%= render 'teste' %>
+ <div class="row">
+  <div class="col-lg-6">
+    <h2><%= @list.name %></h2>
+    <strong>Status:</strong>
+	  <%= @list.public ? t("Pública") : t("Privada") %>
+	  <br><br>
+	  <strong><%= link_to 'Editar Lista', edit_list_path(@list) %></strong>
+	  <br>
+	  <strong><%= link_to 'Apagar Lista', @list, method: :delete, data: { confirm: 'Você tem certeza?' } %></strong>
+      <br><br>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Tarefa</th>
+              <th></th>
+              <th></th>
+              </tr>
+          </thead>
+          <tbody>
+			<% @abertas.each do |task| %>
+		    	<tr>
+		        	<td><%= task.text %></td>
+		        	<td><%= link_to 'Editar Tarefa', edit_task_path(task, :list=> @list) %></td>
+		        	<td><%= link_to 'Apagar', task, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+		    	</tr>
+	  		<% end %>
+	  		<% @fechadas.each do |task| %>
+		    	<tr>
+		        	<td><del><%= task.text %></del></td>
+		        	<td><%= link_to 'Editar Tarefa', edit_task_path(task) %></td>
+		        	<td><%= link_to 'Apagar', task, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+		    	</tr>
+	  		<% end %>
+            <tr>
+            	<td><%= link_to 'Nova Tarefa', new_task_path(:list=> @list) %></td>
+            </tr> 
 
-  <strong>Status:</strong>
-  <%= @list.public ? t("Pública") : t("Privada") %>
-  <br><br><%= link_to 'Editar Lista', edit_list_path(@list) %>
-  <br><%= link_to 'Apagar', @list, method: :delete, data: { confirm: 'Você tem certeza?' } %>
-<br><br>
-<table>
-	<thead>
-		<tr>
-			<th> Tarefa </th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @abertas.each do |task| %>
-	    	<tr>
-	        	<td><%= task.text %></td>
-	        	<td><%= link_to 'Editar Tarefa', edit_task_path(task, :list=> @list) %></td>
-	        	<td><%= link_to 'Apagar', task, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
-	    	</tr>
-	  	<% end %>
-	  	<% @fechadas.each do |task| %>
-	    	<tr>
-	        	<td><del><%= task.text %></del></td>
-	        	<td><%= link_to 'Editar Tarefa', edit_task_path(task) %></td>
-	        	<td><%= link_to 'Apagar', task, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
-	    	</tr>
-	  	<% end %>
-  </tbody>	
-</table>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
 
-<%= link_to 'Nova Tarefa', new_task_path(:list=> @list) %>
-<br>
-<%= link_to 'Voltar', lists_path %>
+

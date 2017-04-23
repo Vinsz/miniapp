@@ -1,39 +1,34 @@
-<h1>Minhas Listas</h1>
+<%= render 'teste' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Status</th>
-    </tr>
-  </thead>
+ <div class="row">
+  <div class="col-lg-6">
+    <h2>Minhas Listas</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Status</th>
+              <th></th>
+              <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @lists.each do |list| %>
+              <tr>
+                <td><%= link_to list.name, list %></td>
+                <td><%= list.public ? t("Pública") : t("Privada") %></td>
+                <td><%= link_to 'Editar', edit_list_path(list) %></td>
+                <td><%= link_to 'Apagar', list, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+              </tr>
+            <% end %>  
+            <tr>
+              <td><%= link_to 'Nova Lista', new_list_path %></td>
+            </tr>            
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
 
-  <tbody>
-    <% @lists.each do |list| %>
-      <tr>
-        <td><%= link_to list.name, list %></td>
-        <td><%= list.public ? t("Pública") : t("Privada") %></td>
-        <td><%= link_to 'Editar', edit_list_path(list) %></td>
-        <td><%= link_to 'Apagar', list, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<%= link_to 'Nova Lista', new_list_path %>
-<br><br>
-<h1>Favoritas</h1>
-<table>
-<thead></thead>
-<tbody>
-<% @favs.each do |fav| %>
-      <tr>
-        <td><%= link_to fav.name, favorite_path(fav, :lid=> fav.lid) %></td>
-      </tr>
-<% end %> 
-</tbody>
-</table>
-<br><br>
-<%= link_to 'Listas Públicas',  {:controller => 'lists', :action => 'publicas'} %>
-<br>
 

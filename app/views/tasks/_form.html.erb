@@ -10,18 +10,40 @@
       </ul>
     </div>
   <% end %>
-<div class="field">
-    <%= f.hidden_field :list_id, :value => params[:list]  %>
-  </div>
 
-  <div class="field">
-    <%= f.text_field :text %>
-  </div>
+<div class="row">
+  <div class="col-lg-6">
+    <h2>Tarefa</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Texto</th>
+              <th>Aberta?</th>
+              </tr>
+          </thead>
+          <tbody>
+            <div class="field">
+              <%= f.hidden_field :list_id, :value => params[:list]  %>
+            </div>
+              <tr>
+                <td>  
+                  <div class="field">
+                    <%= f.text_field :text %>
+                  </div>
+                </td>
+                <td>
+                    <div class="field">
+                      <%= f.check_box :active %>
+                    </div>
+                </td>
+              </tr>           
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :aberta? %>
-    <%= f.check_box :active %>
-  </div>
 
   <div class="actions">
     <%= f.submit %>

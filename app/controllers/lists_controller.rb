@@ -6,6 +6,9 @@ class ListsController < ApplicationController
   def index
     #exibe somente as listas do usuário logado
     @lists = List.all.where(user_id: current_user)
+  end
+
+  def favoritas
     #dados para exibir somente as listas favoritas do usuário e enviar para visualização da lista no show dos favoritos
     @favs = Favorite.joins(:list).select("favorites.id, lists.name, lists.id as lid").where(user_id: current_user)
   end

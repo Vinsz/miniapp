@@ -11,32 +11,70 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => current_user.id  %>
-  </div>
-
-  <div class="field">
-    <%= f.label :nome %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pública? %>
-    <%= f.check_box :public %>
-  </div>
-
-<h2>Tarefas</h2>
-
-  <%= f.fields_for :tasks do |builder| %>
-    <div class="field">
-      
-      <%= builder.text_field :text %>
+ <div class="row">
+  <div class="col-lg-6">
+    <h2>Lista</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Pública?</th>
+              </tr>
+          </thead>
+          <tbody>
+            <div class="field">
+              <%= f.hidden_field :user_id, :value => current_user.id  %>
+            </div>
+              <tr>
+                <td>  
+                  <div class="field">
+                    <%= f.text_field :name %>
+                  </div>
+                </td>
+                <td>
+                    <div class="field">
+                      <%= f.check_box :public %>
+                    </div>
+                </td>
+              </tr>           
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="field">
-      <%= builder.label :aberta? %>
-      <%= builder.check_box :active %>
+</div>
+
+ <div class="row">
+  <div class="col-lg-6">
+    <h2>Tarefas</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Texto</th>
+              <th>Aberta?</th>
+              </tr>
+          </thead>
+          <tbody>
+            <%= f.fields_for :tasks do |builder| %>
+              <tr>
+                <td>  
+                  <div class="field">
+                    <%= builder.text_field :text %>
+                  </div>
+                </td>
+                <td>
+                    <div class="field">
+                      <%= builder.check_box :active %>
+                    </div>
+                </td>
+              </tr> 
+            <% end %>          
+          </tbody>
+        </table>
+      </div>
     </div>
-  <% end %>
+</div>
 
   <div class="actions">
     <%= f.submit %>

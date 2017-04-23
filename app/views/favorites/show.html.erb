@@ -1,30 +1,34 @@
-<p>
-<% @lista.each do |list| %>
-  <h1><%= list.name %></h1>
-</p>
+<%= render 'teste' %>
 
-<%= link_to 'Apagar', @favorite, method: :delete, data: { confirm: 'Você tem certeza?' } %> 
-<br><br>
-<table>
-	<thead>
-		<tr>
-			<th> Tarefas </th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @abertas.each do |task| %>
-	    	<tr>
-	        	<td><%= task.text %></td>
-	    	</tr>
-	  	<% end %>
-	  	<% @fechadas.each do |task| %>
-	    	<tr>
-	        	<td><del><%= task.text %></del></td>
-	    	</tr>
-	  	<% end %>
-  </tbody>	
-</table>
-<% end %>
-<br>
-<%= link_to 'Voltar', lists_path %>
+<div class="row">
+  <div class="col-lg-6">
+  	<% @lista.each do |list| %>
+  		<h2><%= list.name %></h2>
+	  	<strong><%= link_to 'Apagar', @favorite, method: :delete, data: { confirm: 'Você tem certeza?' } %></strong>
+      <br><br>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Tarefa</th>
+            </tr>
+          </thead>
+          <tbody>
+			<% @abertas.each do |task| %>
+		    	<tr>
+		        	<td><%= task.text %></td>
+		    	</tr>
+		  	<% end %>
+		  	<% @fechadas.each do |task| %>
+		    	<tr>
+		        	<td><del><%= task.text %></del></td>
+		    	</tr>
+		  	<% end %>
+          </tbody>
+        </table>
+      </div>
+     <% end %>
+    </div>
+</div>
+
 

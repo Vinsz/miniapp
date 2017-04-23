@@ -1,0 +1,22 @@
+<%= render 'teste' %>
+<div class="row">
+  <div class="col-lg-6">
+    <h2>Favoritas</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @favs.each do |fav| %>
+              <tr>
+                <td><%= link_to fav.name, favorite_path(fav, :lid=> fav.lid) %></td>
+              </tr>
+            <% end %>             
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

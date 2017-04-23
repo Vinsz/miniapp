@@ -1,14 +1,22 @@
-<h1>Listas Públicas</h1>
-
-<table>
-  <tbody>
-    <% @status.each do |publica| %>
-      <tr>
-        <td><%= link_to publica.name, new_favorite_path(publica, :id=>current_user, :list=> publica.id, :name =>publica.name) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= link_to 'Voltar', lists_path %>
+<%= render 'teste' %>
+<div class="row">
+  <div class="col-lg-6">
+    <h2>Listas Públicas</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @status.each do |publica| %>
+              <tr>
+                <td><%= link_to publica.name, new_favorite_path(publica, :id=>current_user, :list=> publica.id, :name =>publica.name) %></td>
+              </tr>
+            <% end %>             
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
